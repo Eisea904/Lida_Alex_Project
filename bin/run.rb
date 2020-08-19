@@ -37,13 +37,13 @@ tdl_nine = To_Do_List.create(user_id: , category_id: 3, note: , completed?: fals
 
 # Test for reading of table => "R"
 
-User.fisrt
+User.first
 User.second
 User.third
 User.last
 User.find()
 
-Category.fisrt
+Category.first
 Category.second
 Category.third
 Category.last

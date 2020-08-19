@@ -24,6 +24,8 @@ class To_Do_App
     def create_user(name)
       name.downcase = User.create(name: "#{name.upcase}")
     end 
+
+    def 
         # login_or_signup
         # wanna_see_favs?
         # get_joke(what_subject)
