@@ -40,7 +40,8 @@ class Interface
     end
 
      def display_everyones_name
-      User.all
+        User.all
+        puts 
      end 
 
 

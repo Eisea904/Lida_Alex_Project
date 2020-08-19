@@ -1,6 +1,12 @@
 class Category < ActiveRecord::Base
 # add associatons!
-    has_many :to_do_lists
-    has_many :users, through: :to_do_lists
+    has_many :todolists
+    has_many :users, through: :todolists
 
-end
+
+    # def self.all_names
+    #     Category.all.map do |category|
+    #         category.name => category.id
+    #     end
+    # end
+end 
