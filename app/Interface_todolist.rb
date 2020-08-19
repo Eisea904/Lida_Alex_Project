@@ -11,14 +11,13 @@ class Interface
     end 
 
     def welcome
-      choice = prompt.select("Welcome to your To-Do-List, how can I help?" ["create user", "choose category", "choose user"])
+      #choice = prompt.select("Welcome to your To-Do-List, how can I help?" ["create user", "choose category", "choose user"])
       prompt.select("How can I help you?") do |menu| 
         menu.choice "create user" , -> {user_registration_helper} 
         menu.choice "choose category" , -> {puts "you chose to see categories"}
 
         menu.choice "choose user" , -> {puts "you chose to see users"}
-
-      
+      end
     end
 
     def user_registration_helper        # Check sintax for user_registration_method
@@ -37,19 +36,20 @@ class Interface
       prompt.select("Choose something to do") do |menu|
         menu.choice "Choose User", -> {display_user_names}
         menu.category "Choose Category" , -> {display_category_names}
+      end
     end
 
      def display_everyones_name
       User.all
-    end 
+     end 
 
 
 
-    def 
+    #def 
         # login_or_signup
         # wanna_see_favs?
         # get_joke(what_subject)
-    end
+    #end
 
     private
 

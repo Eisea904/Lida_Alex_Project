@@ -1,88 +1,38 @@
-Plant.destroy_all
-Person.destroy_all
-PlantParenthood.destroy_all
-Plant.reset_pk_sequence
-Person.reset_pk_sequence
-PlantParenthood.reset_pk_sequence
-
-########### different ways to write your seeds ############
+User.destroy_all
+Category.destroy_all
+ToDoList.destroy_all
 
 
+# Test for user.rb .create => "C"
 
+barbara = User.create(name: "Barbara")
+frank = User.create(name: "Frank")
+jimmy = User.create(name: "Jimmy")
+lisa = User.create(name: "Lisa")
+josephine = User.create(name: "Josephine")
+stephanie = User.create(name: "Stephanie")
+craig = User.create(name: "Craig")
+mark = User.create(name: "Mark")
+mercedes = User.create(name: "Mercedes")
+jamar = User.create(name: "Jamar")
 
+# Test for category.rb
 
+category = Category.create(name: "Activity")
+category_one = Category.create(name: "Errand")
+category_two = Category.create(name: "Event")
 
+# Test for to_do_list.rb
 
-# 1: save everything to variables (makes it easy to connect models, best for when you want to be intentional about your seeds)
-basil = Plant.create(name: "basil the herb", bought: 20200610, color: "green")
-sylwia = Person.create(name: "Sylwia", free_time: "none", age: 30)
-pp1 = PlantParenthood.create(plant_id: basil.id, person_id: sylwia.id, affection: 1_000_000, favorite?: true)
+#tdl = To_Do_List.create(user_id: , category_id: , note: , completed?: location: )
+tdl_one = ToDoList.create(user_id: 1, category_id: 1, note: "abc", completed?: true, location: "ghi")
+tdl_two = ToDoList.create(user_id: 2, category_id: 2, note: "def", completed?: false, location: "jkl")
+tdl_three = ToDoList.create(user_id: 3, category_id: 3, note: "mno", completed?: true, location: "pqr")
+tdl_four = ToDoList.create(user_id: 4, category_id: 1, note: "stu", completed?: true, location: "vwx")
+tdl_five = ToDoList.create(user_id: 5, category_id: 2, note: "yz", completed?: false, location: "ab")
+tdl_six = ToDoList.create(user_id: 6, category_id: 3, note: "cd", completed?: true, location: "ef")
+tdl_seven = ToDoList.create(user_id: 7, category_id: 1, note: "gh", completed?: false, location: "ij")
+tdl_eight = ToDoList.create(user_id: 8, category_id: 2, note: "kl", completed?: true, location: "mn")
+tdl_nine = ToDoList.create(user_id: 9, category_id: 3, note: "op", completed?: true, location: "qr")
+tdl_ten = ToDoList.create(user_id: 10, category_id: 1, note: "st", completed?: false, location: "uv")
 
-# 2. Mass create -- in order to connect them later IN SEEDS (not through the app) you'll need to find their id
-## a. by passing an array of hashes:
-
-
-
-
-
-
-
-Plant.create([
-    {name: "Corn Tree", bought: 20170203, color: "green"},
-    {name: "Prayer plant", bought: 20190815, color: "purple"},
-    {name: "Cactus", bought: 20200110, color: "ugly green"}
-])
-## b. by interating over an array of hashes:
-plants = [{name: "Elephant bush", bought: 20180908, color: "green"},
-    {name: "Photos", bought: 20170910, color: "green"},
-    {name: "Dragon tree", bought: 20170910, color: "green"},
-    {name: "Snake plant", bought: 20170910, color: "dark green"},
-    {name: "polka dot plant", bought: 20170915, color: "pink and green"},
-    {name: "Cactus", bought: 20200517, color: "green"}]
-
-plants.each{|hash| Plant.create(hash)}
-
-
-
-
-
-
-# 3. Use Faker and mass create
-## step 1: write a method that creates a person
-def create_person
-    free = ["mornings", "evenings", "always", "afternoons", "weekends", "none"].sample
-
-    person = Person.create(
-        name: Faker::Movies::HitchhikersGuideToTheGalaxy.character,
-        free_time: free,
-        age: rand(11...70)
-    )
-end
-
-## step 2: write a method that creates a joiner
-def create_joiners(person)
-    plants_number = rand(1..4)
-    plants_number.times do 
-        PlantParenthood.create(
-            plant_id: Plant.all.sample.id, 
-            person_id: person.id, 
-            affection: rand(101), 
-            favorite?: [true, false].sample
-        )
-    end
-end
-
-## step 3: invoke creating joiners by passing in an instance of a person
-10.times do     
-    create_joiners(create_person)
-    ##### ALTERNATIVE:
-    # person = create_person
-    # create_joiners(person)
-end
-
-indoor = Category.create(name: "indoors")
-
-Plant.update(category_id: indoor.id)
-
-
-puts "🔥 🔥 🔥 🔥 "
