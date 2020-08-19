@@ -37,13 +37,13 @@ tdi_ten = To_Do_List.create(user_id: 10, category_id: 1, note: nil, completed?: 
 
 # Test for reading of table => "R"
 
-User.fisrt
+User.first
 User.second
 User.third
 User.last
 User.find()
 
-Category.fisrt
+Category.first
 Category.second
 Category.third
 Category.last
