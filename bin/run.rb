@@ -29,14 +29,14 @@ To_Do_List.find()
 #var = Noun.find_by(attr: value) => var.update(attr1: value, attr2: value)
 #Then call var in console to confirm it can be read
 
-new_location = To_Do_List.find_by(location: "school")
-new_location.update(location: school, location: tennis court)
+new_location = Todolist.find_by(location: "ab")
+new_location.update(location:"store")
 
 #**********************UPDATING ALL INSTANCES**************************
 
 # Noun.update(attribute: value, another_attribute: value)
 
-To_Do_List.update(note: nil, note: Emergency notice)
+Todolist.update(note: "Emergency notice!")
 
 #Test for deleting => "D"
 
@@ -48,5 +48,5 @@ Category.destroy_all
 
 # var = Noun.find_by(attr: value) => var.destroy
 
-task_completed = To_Do_List.find_by(completed?: true)
+task_completed = Todolist.find_by(note: "Emergency notice!")
 task_completed.destroy 
