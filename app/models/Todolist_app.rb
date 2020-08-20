@@ -15,7 +15,7 @@ class TodolistApp
 
         prompt.select("Welcome, How can I help you?") do |menu| 
           menu.choice "Create user", -> {user_registration_helper} 
-          menu.choice "Choose Sign In" , -> {puts "you chose to sign in"}
+          menu.choice "Choose Sign In" , -> {puts "You chose to sign in"}
           menu.choice "Choose category", -> {puts "You chose to view categories"}
         end
     end
@@ -45,20 +45,18 @@ class TodolistApp
 
 
     def user_login_helper
-      user_login_name = user.login()
-      until user_login_name
-        user_login_name == user.login()
+      userReturnValue = user.login()
+      until userReturnValue
+        userReturnValue == user.login()
       end
       self.user = userReturnValue
       self.main_menu 
-
-
     end
 
-     def display_category_names
-        User.all
-        puts 
-     end 
+    # # def display_category_names
+    #     User.all
+    #     puts 
+    #  end 
 
 
 

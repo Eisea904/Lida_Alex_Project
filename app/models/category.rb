@@ -9,4 +9,6 @@ class Category < ActiveRecord::Base
     #         category.name => category.id
     #     end
     # end
+    
+    
 end 
