@@ -23,9 +23,9 @@ class TodolistApp
                         # Check sintax for user_registration_method
                         
     def user_registration_helper        
-      userInputValue = user.registration()
+      userInputValue = User.registration()
       until userInputValue
-        userInputValue == user.registration()
+        userInputValue == User.registration()
       end
       self.user = userInputValue
       self.main_menu 
@@ -48,30 +48,28 @@ class TodolistApp
       system "clear"     # clears the terminal and pushes this to the top
       puts "Hello there #{self.user.name}!"
 
-      prompt.select("Do you want to...", %w(Choose to login, Choose Category)) do |menu|
-        menu.choice "Choose to login", -> {user_login_helper}
+      prompt.select("Do you want to..." ) do |menu|
+        menu.choice "Create a To Do List", -> {create_a_todolist}
         menu.choice "Choose Category", -> {display_category_names}
       end
     end
 
-
-<<<<<<< HEAD
-    def user_login_helper
-      userReturnValue = user.login()
-      until userReturnValue
-        userReturnValue == user.login()
+    def create_a_todolist
+      selected_category = prompt.select("Select a category") do |menu|
+        Category.all.each do |category|
+          menu.choice "#{category.name}"
       end
-      self.user = userReturnValue
-      self.main_menu 
-=======
-    
-
-    def display_category_names
-      
-      Category.all
-      
->>>>>>> b3fce2c05d9cb7977c14912693bd509e2141c3d7
     end
+      selected_category_id = Category.find_by(name: selected_category).id
+        print selected_category_id
+
+        entered_loc = prompt.ask("Enter location")
+        enter_note = prompt.ask("Enter note")
+        enter_completed? = prompt.ask("completed? Enter(True/False)")
+        end 
+
+
+    
 
     # # def display_category_names
     #     User.all

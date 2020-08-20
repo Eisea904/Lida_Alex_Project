@@ -42,16 +42,13 @@ class User < ActiveRecord::Base
       # person can then select the item to update
         
       # person enters new information into the selected item
-          # if Activity 
-          #   update activity_item and save
-          # elsif Errand update errand_item and save
-          # elsif Event update event_item and save
-          #   exit
-          #   sleep(0.3)
-          # end
-            
-
-            
+          if Activity 
+            update activity_item and save
+          elsif Errand update errand_item and save
+          elsif Event update event_item and save
+            exit
+            sleep(0.3)
+          end
       # person saves the update
       # person exits app
     
