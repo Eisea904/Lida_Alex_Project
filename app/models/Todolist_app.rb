@@ -1,7 +1,7 @@
 require "tty-prompt"
 prompt = TTY::Prompt.new 
 
-class Interface
+class TodolistApp
     # here will be your CLI!
     # it is not an AR class so you need to add attr
     attr_accessor :user
@@ -63,6 +63,10 @@ class Interface
       
     end
 
+     def display_category_names
+        User.all
+        puts 
+     end 
 
 
 
