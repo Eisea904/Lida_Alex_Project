@@ -1,6 +1,6 @@
 User.destroy_all
 Category.destroy_all
-ToDoList.destroy_all
+Todolist.destroy_all
 
 
 # Test for user.rb .create => "C"
