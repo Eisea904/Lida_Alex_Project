@@ -16,12 +16,13 @@ class User < ActiveRecord::Base
   end
   
   def self.sign_in
-    userInfo = TTY::Prompt.new.ask("What is your log in info?")
+    userInput = TTY::Prompt.new.ask("What is your log in info?")
 
-    if User.find_by(name: userInfo)
+    if User.find_by(name: userInput)
       puts "That is incorrect, please try again"
       
     else
-      User.find(name: userInfo)
+      User.find(name: userInput)
     end
+  end
 end
