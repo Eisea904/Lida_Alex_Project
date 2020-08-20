@@ -31,6 +31,17 @@ class Interface
       self.main_menu 
     end 
 
+    def user_login_helper
+      user_login_name = user.login()
+      until user_login_name
+        user_login_name == user.login()
+      end
+      self.user = userReturnValue
+      self.main_menu 
+      
+
+    end
+
     def main_menu
 
       user.reload        # we reload to get most recent data
@@ -44,21 +55,14 @@ class Interface
     end
 
 
-    def user_login_helper
-      user_login_name = user.login()
-      until user_login_name
-        user_login_name == user.login()
-      end
-      self.user = userReturnValue
-      self.main_menu 
+    
 
-
+    def display_category_names
+      
+      Category.all
+      
     end
 
-     def display_everyones_name
-        User.all
-        puts 
-     end 
 
 
 

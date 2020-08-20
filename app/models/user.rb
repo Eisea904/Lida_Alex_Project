@@ -24,4 +24,5 @@ class User < ActiveRecord::Base
     else
       User.find(name: userInfo)
     end
+  end 
 end
