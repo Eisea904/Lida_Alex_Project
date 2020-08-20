@@ -31,6 +31,17 @@ class TodolistApp
       self.main_menu 
     end 
 
+    def user_login_helper
+      user_login_name = user.login()
+      until user_login_name
+        user_login_name == user.login()
+      end
+      self.user = userReturnValue
+      self.main_menu 
+      
+
+    end
+
     def main_menu
 
       user.reload        # we reload to get most recent data
@@ -44,6 +55,7 @@ class TodolistApp
     end
 
 
+<<<<<<< HEAD
     def user_login_helper
       userReturnValue = user.login()
       until userReturnValue
@@ -51,6 +63,14 @@ class TodolistApp
       end
       self.user = userReturnValue
       self.main_menu 
+=======
+    
+
+    def display_category_names
+      
+      Category.all
+      
+>>>>>>> b3fce2c05d9cb7977c14912693bd509e2141c3d7
     end
 
     # # def display_category_names
