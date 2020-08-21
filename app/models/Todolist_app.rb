@@ -44,8 +44,8 @@ class TodolistApp
         puts "Hello there #{self.user.name}!"
 
         prompt.select("Do you want to..." ) do |menu|
-          menu.choice "Create a To Do List", -> {create_a_todolist}
-          menu.choice "Choose Category", -> {display_category_names}
+            menu.choice "Create a To Do List", -> {create_a_todolist}
+            menu.choice "Choose Category", -> {display_category_names}
         end
     end
 
