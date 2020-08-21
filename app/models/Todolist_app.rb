@@ -63,7 +63,7 @@ class TodolistApp
         entered_completed = prompt.ask("completed? Enter(True/False)")
         entered_name = prompt.ask("Enter title")
         entered_data_for_created_list = Todolist.new(user.name, selected_category, entered_loc, entered_note, entered_completed)
-        update_list
+        update_list #--> will send user to update_list method and prompts
         # sleep 5
         #     self.main_menu
         #     # self.main_menu <- To take me back to the main_menu
