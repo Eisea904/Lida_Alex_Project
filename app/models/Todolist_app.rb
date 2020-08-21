@@ -15,12 +15,12 @@ class TodolistApp
 
         prompt.select("Welcome, How can I help you?") do |menu| 
           menu.choice "Create user", -> {user_registration_helper} 
-          menu.choice "Choose Sign In" , -> {puts "You chose to sign in"}
-          menu.choice "Choose category", -> {puts "You chose to view categories"}
+          menu.choice "Choose List" , -> {puts "Do you have a list?"}
+          menu.choice "Choose category", -> {create_a_todolist}
         end
     end
 
-                        # Check sintax for user_registration_method
+      
                         
     def user_registration_helper        
       userInputValue = User.registration()
@@ -31,16 +31,15 @@ class TodolistApp
       self.main_menu 
     end 
 
-    def user_login_helper
-      user_login_name = user.login()
-      until user_login_name
-        user_login_name == user.login()
-      end
-      self.user = userReturnValue
-      self.main_menu 
+    # def user_login_helper
+    #   user_login_name = User.login()
+    #   until user_login_name
+    #     user_login_name == User.login()
+    #   end
+    #   self.user = user_login_name
+    #   self.main_menu 
+    # end
       
-
-    end
 
     def main_menu
 
@@ -64,25 +63,49 @@ class TodolistApp
         print selected_category_id
 
         entered_loc = prompt.ask("Enter location")
-        enter_note = prompt.ask("Enter note")
-        enter_completed? = prompt.ask("completed? Enter(True/False)")
-        end 
+        entered_note = prompt.ask("Enter note")
+        entered_completed = prompt.ask("completed? Enter(True/False)")
+        entered_name = prompt.ask("Enter title")
+        entered_data_for_created_list = Todolist.new(user.name, selected_category, entered_loc, entered_note, entered_completed)
+        update_list
 
+        sleep 5
+          self.main_menu
+          # self.main_menu <- To take me back to the main_menu
+      end
 
-    
+      def display_and_update_list
+        # Todolist.all_names => [{name => id}, {name => id}]
+        Todolist.all.each do |todolists|
+          todolists.name
 
-    # # def display_category_names
-    #     User.all
-    #     puts 
-    #  end 
+        main_menu
+   
+    end
 
+end
 
+        def update_to_completed
+          entered_name.entered_completed = True
+          destroy_single_item
+        end
 
-    #def 
-        # login_or_signup
-        # wanna_see_favs?
-        # get_joke(what_subject)
-    #end
+        def update_list
+          prompt.select("Update item to 'completed'?") do |menu|
+            menu.choice "True", -> {update_to_completed}
+            menu.choice "False", -> {return "See you later!"}
+          end
+        end
+          # choices = {"Barbara" => 1, "Frank" => 2, "Jimmy" => 3, ""}
+          # prompt.select("Choose your destiny?", choices)
+          #print selected_category.all
+
+          def destroy_single_item
+            prompt.select("Erase completed item?") do |menu|
+              menu.choice "Yes", ->{"deleted completed item, thank you Cha-ching!"}
+              menu.choice "No", -> {"Thank you, Cha-ching!"}
+            end
+          end
 
     private
 
