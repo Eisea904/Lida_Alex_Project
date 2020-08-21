@@ -62,8 +62,8 @@ class TodolistApp
         @entered_loc = prompt.ask("Enter location")
         @entered_note = prompt.ask("Enter note")
         @entered_completed = prompt.ask("completed? Enter(true/false)")
-        @entered_name = prompt.ask("Enter title")
-        #@entered_data_for_created_list = Todolist.create(user, category_id, @entered_loc, @entered_note, @entered_completed)
+        @entered_title = prompt.ask("Enter title")
+        @entered_title = Todolist.create(user_id: user.id, category_id: category_id, location: @entered_loc, note: @entered_note, completed?: @entered_completed) 
         update_list #--> will send user to update_list method and prompts
         # sleep 5
         #     self.main_menu
@@ -96,7 +96,8 @@ class TodolistApp
 
     def destroy_single_item
         prompt.select("Erase completed item?") do |menu|
-            menu.choice "Yes", ->{self.destroy puts "deleted completed item, thank you Cha-ching!"}
+            #binding.pry 
+            menu.choice "Yes", ->{@entered_title.destroy puts "deleted completed item, thank you Cha-ching!"}
             menu.choice "No", -> {"Thank you, this session was saved, Cha-ching!"}
         end
     end
