@@ -23,7 +23,7 @@ class TodolistApp
     def user_registration_helper        
         userInputValue = User.registration()
         until userInputValue
-          userInputValue == User.registration()
+            userInputValue == User.registration()
         end
         self.user = userInputValue
         self.main_menu 
@@ -32,7 +32,7 @@ class TodolistApp
     # def user_login_helper
     #   user_login_name = User.login()
     #   until user_login_name
-    #     user_login_name == User.login()
+    #       user_login_name == User.login()
     #   end
     #   self.user = user_login_name
     #   self.main_menu 
@@ -69,13 +69,13 @@ class TodolistApp
         #     # self.main_menu <- To take me back to the main_menu
     end
 
-    def display_and_update_list
-        # Todolist.all_names => [{name => id}, {name => id}]
-        Todolist.all.each do |todolists|
-            todolists.name
-            main_menu
-        end
-    end
+    # def display_and_update_list
+    #     # Todolist.all_names => [{name => id}, {name => id}]
+    #     Todolist.all.each do |todolists|
+    #         todolists.name
+    #         main_menu
+    #     end
+    # end
 
     def update_to_completed
         entered_name.entered_completed = True

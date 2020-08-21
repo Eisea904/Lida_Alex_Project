@@ -12,8 +12,8 @@ end
 
 desc "start our app"
 task :start do
-  app = Interface_todolist.new
-  app.run
+  app = TodolistApp.new
+  app.welcome
 end
 
 # desc "run our app"

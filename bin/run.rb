@@ -1,6 +1,6 @@
 require_relative '../config/environment'
 
-app = nameOfYourApp.new
+app = TodolistApp.new
 app.run
 
 # Test for reading of table => "R"
