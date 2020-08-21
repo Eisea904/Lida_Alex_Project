@@ -16,21 +16,21 @@ class User < ActiveRecord::Base
       end
 
   
-      def self.sign_in
-        userInput = TTY::Prompt.new.ask("What is your log in info?")
+      # def self.sign_in
+      #   userInput = TTY::Prompt.new.ask("What is your log in info?")
 
-          if User.find_by(name: userInput)
-            puts "That is incorrect, please try again"
-          else
-            User.find(name: userInput)
-          end
-      end
+      #     if User.find_by(name: userInput)
+      #       puts "That is incorrect, please try again"
+      #     else
+      #       User.find(name: userInput)
+      #     end
+      # end
 
-      def my_todolists
-        Todolist.all.select do |todolist_details|
-          todolist_details.user == self
-        end
-      end
+      # def my_todolists
+      #   Todolist.all.select do |todolist_details|
+      #     todolist_details.user == self
+      #   end
+      # end
   
 
       def list_update_notes

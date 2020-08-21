@@ -45,7 +45,7 @@ class TodolistApp
 
         prompt.select("Do you want to..." ) do |menu|
             menu.choice "Create a To Do List", -> {create_a_todolist}
-            menu.choice "Choose Category", -> {display_category_names}
+            menu.choice "Choose Category", -> {create_a_todolist}
         end
     end
 
@@ -55,14 +55,15 @@ class TodolistApp
                 menu.choice "#{category.name}"
             end
         end
-        selected_category_id = Category.find_by(name: selected_category).id
-        print selected_category_id
+        category_id = Category.find_by(name: selected_category).id
+        print category_id
+
         #enter variables to make Todolist.new
-        entered_loc = prompt.ask("Enter location")
-        entered_note = prompt.ask("Enter note")
-        entered_completed = prompt.ask("completed? Enter(True/False)")
-        entered_name = prompt.ask("Enter title")
-        entered_data_for_created_list = Todolist.new(user.name, selected_category, entered_loc, entered_note, entered_completed)
+        @entered_loc = prompt.ask("Enter location")
+        @entered_note = prompt.ask("Enter note")
+        @entered_completed = prompt.ask("completed? Enter(true/false)")
+        @entered_name = prompt.ask("Enter title")
+        #@entered_data_for_created_list = Todolist.create(user, category_id, @entered_loc, @entered_note, @entered_completed)
         update_list #--> will send user to update_list method and prompts
         # sleep 5
         #     self.main_menu
@@ -78,14 +79,15 @@ class TodolistApp
     # end
 
     def update_to_completed
-        entered_name.entered_completed = True
+        #binding.pry 
+        entered_completed = true
         destroy_single_item
     end
 
     def update_list
         prompt.select("Update item to 'completed'?") do |menu|
             menu.choice "True", -> {update_to_completed}
-            menu.choice "False", -> {return "See you later!"}
+            menu.choice "False", -> {puts "See you later!"}
         end
     end
           # choices = {"Barbara" => 1, "Frank" => 2, "Jimmy" => 3, ""}
@@ -94,8 +96,8 @@ class TodolistApp
 
     def destroy_single_item
         prompt.select("Erase completed item?") do |menu|
-            menu.choice "Yes", ->{"deleted completed item, thank you Cha-ching!"}
-            menu.choice "No", -> {"Thank you, Cha-ching!"}
+            menu.choice "Yes", ->{self.destroy puts "deleted completed item, thank you Cha-ching!"}
+            menu.choice "No", -> {"Thank you, this session was saved, Cha-ching!"}
         end
     end
 private
