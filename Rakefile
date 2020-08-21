@@ -16,12 +16,6 @@ task :start do
   app.welcome
 end
 
-# desc "run our app"
-# task :start do
-#   interface_inst = Interface.new
-#   interface_inst.welcome
-# end
-
 namespace :remind_me_about do
 
   desc "🎁 process for adding a new table"
